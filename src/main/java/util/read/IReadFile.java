@@ -255,7 +255,8 @@ class method {
      * @return 时间（单位毫秒）
      */
     int noteToMillisecond(int bpm, int note) {
-        return (bpm * 1000) / (60) / note;
+        // 分钟/vpm/音符
+        return ((60 * 1000) / bpm) * 4 / note;
     }
 
     /**

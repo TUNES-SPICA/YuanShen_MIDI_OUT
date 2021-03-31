@@ -1,0 +1,41 @@
+[Settings]
+Encoding=gb2312
+Title=
+Source=
+Memo=
+[Channel1]
+
+/*M 0  */  r1
+/*M 1  */  c8g8e8g8c8g8e8g8
+/*M 2  */  c8a8f8a8c8g8e8g8
+/*M 3  */  b8g8d8g8c8g8e8g8
+/*M 4  */  b8g8d8g8>c2
+/*M 5  */  <c8g8e8g8b8g8d8g8
+/*M 6  */  c8g8e8g8>d2
+/*M 7  */  <c8g8e8g8b8g8d8g8
+/*M 8  */  c8g8e8g8b8g8d8g8
+/*M 9  */  >c4c4g4g4
+/*M 10 */  a4a4g2
+/*M 11 */  f4f4e4e4
+/*M 12 */  <b8g8d8g8c8g8e8g8
+[Channel2]
+
+/*M 0  */  c8g8e8g8c8g8e8g8
+/*M 1  */  >c4c4g4g4
+/*M 2  */  a4a4g2
+/*M 3  */  f4f4e4e4
+/*M 4  */  d4d4<c8g8e8g8
+/*M 5  */  >g4g4f4f4
+/*M 6  */  e4e4<b8g8d8g8
+/*M 7  */  >g4g4f4f4
+/*M 8  */  e4e4d2
+/*M 9  */  <c8g8e8g8c8g8e8g8
+/*M 10 */  c8a8f8a8c8g8e8g8
+/*M 11 */  b8g8d8g8c8g8e8g8
+/*M 12 */  >d4d4c2
+/*M 13 */  <c4
+[3MLE EXTENSION]
+/* DO NOT EDIT!! DATA VOID IF "3MLE EXTENSION" IS EDITED. */
+c=3178611179
+d=ugAAANl+ZKEBAAAAQlpoOTFBWSZTWYK7puUAADl/gP7U0ARACDAAQIAEAHwM0gAAAKAAaDKahtQ0xAGmhoCU1CjABGRhoep8KXRWDQijKoi9VTisARYSRownWCDzZBOi
+d=dTb68fc8Ck+powILPjckG6aQqETWQpuOVyLEYi+Ci5AZxOMpeC7kinChIQV3Tco=

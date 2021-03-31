@@ -3,8 +3,6 @@ Encoding=gb2312
 Title=
 Source=
 Memo=
-[Channel5]
-t120
 [Channel1]
 
 /*M 0  */  r1
@@ -247,7 +245,7 @@ t120
 /*M 77 */  c8>c8r8c8r8c8r8c8
 [Channel4]
 
-/*M 0  */  r2.>c8d8
+/*M 0  */  r2r4>c8d8
 /*M 1  */  e8<g8>c8e8e8r8d8c8
 /*M 2  */  d8g8g8g8g8r8c8<b8
 /*M 3  */  >c8c8c8c8c8r8<b8>c8
@@ -267,7 +265,7 @@ t120
 /*M 17 */  >c8<b8>c8e8d8c8<b8g8
 /*M 18 */  e8d8e8>d8c4r8<a16b16
 /*M 19 */  >c8<b8>c8e8d8c8<b8>d4
-/*M 20 */  <g2&g8r8a16b16
+/*M 20 */  <g2r8r8a16b16
 /*M 21 */  >c8<b8>c8e8d8c8<b8g8
 /*M 22 */  e8d8e8>d8c4r8<f16e16
 /*M 23 */  f8e8f8e8f8e8f8>e8
@@ -282,33 +280,30 @@ t120
 /*M 32 */  b8a8b8>c8<b4a8g8
 /*M 33 */  a8g8a8>e8d4r8<g8
 /*M 34 */  g8e8g8>d8c4r8<g8
-/*M 35 */  >f4e8c8c8d4d2&
-/*M 36 */  d8r8<g8>c8d8
+/*M 35 */  >f4e8c8c8d4d2r8r8<g8>c8d8
 /*M 37 */  e4<g4>f8e8d8c8
-/*M 38 */  <b8b4>g4.r4
+/*M 38 */  <b8b4>g4r8r4
 /*M 39 */  c4<e4>d8c8<b8a8
-/*M 40 */  b8b4g4.r8e8
-/*M 41 */  f4>c4<b4.g8
+/*M 40 */  b8b4g4r8r8e8
+/*M 41 */  f4>c4<b4r8g8
 /*M 42 */  g4>d8c8c2
-/*M 43 */  f8e8f8e8f8e4d2&
-/*M 44 */  d8r2.
+/*M 43 */  f8e8f8e8f8e4d2r8r2r4
 /*M 45 */  g8g8g4g8g8
 /*M 46 */  a8g8e8g8r8<b8>c8c8
 /*M 47 */  e4e8e16f16e8c8c8d8
 /*M 48 */  e2r8e8d8c8
 /*M 49 */  c8c4c8r8c8c8c8
-/*M 50 */  c8<g8g8>d16e8.c4<g8
+/*M 50 */  c8<g8g8>d16e8r16c4<g8
 /*M 51 */  >f4f8f8f8<a8>c8c8
 /*M 52 */  d2e4f4
-/*M 53 */  g2.<b8>d4
-/*M 54 */  c4.r4<g8>g4
+/*M 53 */  g2r4<b8>d4
+/*M 54 */  c4r8r4<g8>g4
 /*M 55 */  f8f8f8f8e8c8e4
 /*M 56 */  d4r8e4f4
-/*M 57 */  a8g2&g8<b8>d4
-/*M 58 */  c4.r4.f4
+/*M 57 */  a8g2r8<b8>d4
+/*M 58 */  c4r8r4r8f4
 /*M 59 */  e8f8e8f4r8f4
-/*M 60 */  e8f8e8f8c8c8g2&
-/*M 61 */  g8a8g8e8d8
+/*M 60 */  e8f8e8f8c8c8g2r8a8g8e8d8
 /*M 62 */  e8<g8>c8e8e8r8d8c8
 /*M 63 */  d8g8g8a8g8r8c8<b8
 /*M 64 */  >c8c8c8d8c8r8<b8>c8
@@ -320,13 +315,13 @@ t120
 /*M 70 */  d8e4d8c8d16c16<a8g8
 /*M 71 */  g4g8>d8c2
 /*M 72 */  c8c8c8<a8>c4e8g8
-/*M 73 */  e2.r4
+/*M 73 */  e2r4r4
 /*M 74 */  d8e4d8c8d16c16<a8g8
 /*M 75 */  g4g8>d8c2
 /*M 76 */  c8c4<a8g8g8g8>d8
 /*M 77 */  c2
 [3MLE EXTENSION]
 /* DO NOT EDIT!! DATA VOID IF "3MLE EXTENSION" IS EDITED. */
-c=1478124770
-d=RQEAADFF1ccBAAAAQlpoOTFBWSZTWQwUnzoAAGD/gv/U0ARACDoAQIAEAHwM0gARAASAoACFCSmlP0iekGmg0Bk0abUEqepAaJoGAmDSYEqIynbvkLXWi6IWVVQgTj3c
-d=TuyC2CSTwV/PpfqBGlzGXZjD42OEvucZe7UVoa8YOsCLbccEOPADNDVJI1ggUqHpzBP3Ddh4hHRywHsF9BRPZLMHFmEKPpSiSi85z/i7kinChIBgpPnQ
+c=375072288
+d=FgEAABLuuCABAAAAQlpoOTFBWSZTWZOZ8VMAAFN/gv/U0ARACDgAQIAEAHwM0gARAASAoACRGDQwmARowIGmCSQmmkyGmhoDCPU2pQNd19nGIWSDB6LZSZi5/ioFeySX
+d=Tri9JbYONe7jL47PKP2b46cgkYsnuOz0PdvzyCoqYXqt1bAyaTGjWA2k1MLoFkXF6bBNCFs1AU01IbUoCfmMdhdyRThQkJOZ8VM=

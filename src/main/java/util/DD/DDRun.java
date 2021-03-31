@@ -25,7 +25,6 @@ public class DDRun implements Runnable {
             YuanShenSymbol temp = yuanShenSymbolQueue.poll();
             InoutSymbol entity = new InoutSymbol();
             sb.append("(").append(temp.type).append(",").append(temp.key).append(",").append(temp.param).append(")");
-
             if (temp.type == 1) {
                 sb2.append(temp.key);
                 sb2.append(2000 / temp.param);
@@ -47,7 +46,7 @@ public class DDRun implements Runnable {
                 }
             }
         }
-        System.out.println(Thread.currentThread().getName() + "音轨加载完毕" + "\n" + sb.toString() + "\n" + sb2.toString());
+        System.out.println(Thread.currentThread().getName() + "音轨加载完毕" + "\n" + sb.toString() + "\n" + sb2.toString() + "\n" + inputSymbolsQueue.size());
     }
 
     public DDRun(CountDownLatch countDownLatch, Queue<YuanShenSymbol> yuanShenSymbolQueue) {
@@ -60,7 +59,7 @@ public class DDRun implements Runnable {
             InoutSymbol symbol = inputSymbolsQueue.poll();
             DD.INSTANCE.DD_key(symbol.keyValue, 1);
             DD.INSTANCE.DD_key(symbol.keyValue, 2);
-            Thread.sleep(symbol.time);
+            java.util.concurrent.locks.LockSupport.parkNanos(symbol.time * 1000000L);
         }
     }
 
@@ -69,9 +68,9 @@ public class DDRun implements Runnable {
         try {
             init();
             countDownLatch.await();
-//            System.out.println(Thread.currentThread().getName() + "启动时间是" + System.currentTimeMillis());
-//            Inout();
-//            System.out.println(Thread.currentThread().getName() + "输出完毕" + System.currentTimeMillis());
+            System.out.println(Thread.currentThread().getName() + "启动时间是" + System.currentTimeMillis());
+            Inout();
+            System.out.println(Thread.currentThread().getName() + "输出完毕" + System.currentTimeMillis());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -41,7 +41,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Thread.sleep(2000);
         String fileURL = "" +
-                "D:\\project\\JavaWEB\\MIDI_OUT\\src\\main\\resources\\学猫叫+佛系少女+好想你+青春修炼手册 组曲.mml"
+                "D:\\project\\other\\MIDI_OUT\\src\\main\\resources\\学猫叫+佛系少女+好想你+青春修炼手册 组曲.mml"
+//                "D:\\project\\other\\MIDI_OUT\\src\\main\\resources\\小星星.mml"
                 + "";
         // 初始化qq
         init();
