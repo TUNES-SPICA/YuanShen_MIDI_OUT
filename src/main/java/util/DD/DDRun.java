@@ -67,8 +67,9 @@ public class DDRun implements Runnable {
     public void run() {
         try {
             init();
-            countDownLatch.await();
             System.out.println(Thread.currentThread().getName() + "启动时间是" + System.currentTimeMillis());
+            countDownLatch.await();
+            //注释此处关闭按键输出
             Inout();
             System.out.println(Thread.currentThread().getName() + "输出完毕" + System.currentTimeMillis());
         } catch (InterruptedException e) {
