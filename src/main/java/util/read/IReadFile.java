@@ -90,9 +90,21 @@ class method {
                 sb = new StringBuffer();
                 while (c != 0x0000005B) {
                     if (c != 0x0000000A && c != 0x0000000D) {
-                        if (c == '&') {
-                            c = 'r';
+                        {
+                            // 清楚注释
+                            if (c == '/') {
+                                for (int i = 0; i < 10; i++) {
+                                    c = (char) fis.read();
+                                }
+                            }
                         }
+                        {
+                            // 置换连音符
+                            if (c == '&') {
+                                c = 'r';
+                            }
+                        }
+
                         sb.append(c);
                     }
                     c = (char) fis.read();
@@ -132,6 +144,7 @@ class method {
             // 指针,指向读取的位置
             int pointer = 0;
 
+            // 遍历字符串 *开*冲*!
             while (pointer < str.length()) {
                 char c = str.charAt(pointer);
                 YuanShenSymbol symbol = new YuanShenSymbol();
@@ -140,31 +153,41 @@ class method {
                 symbol.key = c + "";
                 if (symbol.type == 1) {
                     {
-                        if (++pointer < str.length() && str.charAt(pointer) == '+') {
-                            symbol.key = symbol.key + "+";
+                        // 此处用于处理黑键，例如 e+ f-
+                        if (++pointer < str.length() && (str.charAt(pointer) == '+' || str.charAt(pointer) == '-')) {
+                            symbol.key = symbol.key + str.charAt(pointer);
                         } else {
                             pointer--;
                         }
                     }
+                    // d4 -> note = 4 即音符d，为四分之一音符
+                    // c8 -> note = 8 即音符c，为八分之一音符
+                    // e16. -> note = 16+（16/2） 即按下音符e的时长为十六分之一音符 + （十六分之一音符/2）
+                    // . 代表五线谱中的休止符号
                     int note = 0;
-                    if (c == 'n') {
-                        int n = 0;
-                        n = Character.getNumericValue(str.charAt(++pointer));
-                        n = n * 10 + Character.getNumericValue(str.charAt(++pointer));
-                        symbol.key = nToKey(n);
-                    } else {
-                        while (++pointer < str.length() && str.charAt(pointer) < 97 && str.charAt(pointer) != '<' && str.charAt(pointer) != '>') {
-                            c = str.charAt(pointer);
-                            if (c < 58 && c > 47) {
-                                note = note * 10 + Character.getNumericValue(c);
-                            } else if (c == '.') {
-                                if (note == 0) {
-                                    note = var.getL();
-                                }
-                                symbol.param = noteToMillisecond(var.getT(), note * 2);
+//                    ==================================================================================================================
+                    // 压缩音符-暂不考虑，有 亿 点小问题
+//                    if (c == 'n') {
+//                        int n = 0;
+//                        n = Character.getNumericValue(str.charAt(++pointer));
+//                        n = n * 10 + Character.getNumericValue(str.charAt(++pointer));
+//                        symbol.key = nToKey(n);
+//                    } else {
+//                    ==================================================================================================================
+                    // 遍历，知道出现字母为止，读取其中的数字或者小数点，计算按键市场
+                    while (++pointer < str.length() && str.charAt(pointer) < 97 && str.charAt(pointer) != '<' && str.charAt(pointer) != '>') {
+                        c = str.charAt(pointer);
+                        if (c < 58 && c > 47) {
+                            note = note * 10 + Character.getNumericValue(c);
+                        } else if (c == '.') {
+                            if (note == 0) {
+                                note = var.getL();
                             }
+                            symbol.param = noteToMillisecond(var.getT(), note * 2);
                         }
                     }
+//                    }
+                    // 如果音符后面没有数字，则默认为全局变量 L 的时长
                     if (note == 0) {
                         note = var.getL();
                     }
@@ -172,9 +195,15 @@ class method {
                     queue.add(symbol);
                 } else {
                     if (c == 'o') {
+                        // o 代表音域
+                        // o4 = 代表钢琴中，第四组 哆喏咪发嗦啦唏
+                        // o的默认参数是4，o4也称之为中央C
                         symbol.param = Character.getNumericValue(str.charAt(++pointer));
                         queue.add(symbol);
                     } else if (c == 't') {
+                        // bpm调节
+                        // 此处计算有 亿 点问题
+                        // 问题不大，能用就行
                         int bpm = 0;
                         while (++pointer < str.length() && Character.isDigit(str.charAt(pointer))) {
                             bpm = bpm * 10 + Character.getNumericValue(str.charAt(pointer));
@@ -182,21 +211,24 @@ class method {
                         pointer--;
                         var.setT(bpm);
                     } else if (c == 'l') {
-//                        int l = Character.getNumericValue(str.charAt(++pointer));
+                        // 压缩音符-暂不考虑
+                        // 音轨全局节奏调节
                         int l = 0;
                         while (++pointer < str.length() && Character.isDigit(str.charAt(pointer))) {
-                            l = l * 10 +  Character.getNumericValue(str.charAt(pointer));
+                            l = l * 10 + Character.getNumericValue(str.charAt(pointer));
                         }
                         pointer--;
                         var.setL(l);
                         pointer++;
                     } else if (c == '<') {
+                        // 降低音轨全局变量o的一个音域
                         pointer++;
                         symbol.key = "o";
                         symbol.param = var.getO() - 1;
                         var.setO(symbol.param);
                         queue.add(symbol);
                     } else if (c == '>') {
+                        // 提高音轨全局变量o的一个音域
                         pointer++;
                         symbol.key = "o";
                         symbol.param = var.getO() + 1;
@@ -204,6 +236,8 @@ class method {
                         queue.add(symbol);
                     } else {
                         while (++pointer < str.length() && Character.isDigit(str.charAt(pointer))) {
+                            //过滤 *意*义*不*明* 的字符穿~~~
+                            System.out.print("• .•̀ <(你在这里干嘛!");
                         }
                     }
                 }

@@ -28,6 +28,7 @@ public class DDRun implements Runnable {
 
             if (temp.type == 1) {
                 sb2.append(temp.key);
+                sb2.append(2000 / temp.param);
                 if (temp.key.length() == 1) {
                     // 白键，记录
                     Integer key = mapper.getYuanShenKey(var.getO(), temp.key);
@@ -46,9 +47,7 @@ public class DDRun implements Runnable {
                 }
             }
         }
-        System.out.println(sb.toString());
-        System.out.println(sb2.toString());
-        System.out.println(Thread.currentThread().getName() + "音轨加载完毕" + System.currentTimeMillis());
+        System.out.println(Thread.currentThread().getName() + "音轨加载完毕" + "\n" + sb.toString() + "\n" + sb2.toString());
     }
 
     public DDRun(CountDownLatch countDownLatch, Queue<YuanShenSymbol> yuanShenSymbolQueue) {
@@ -70,7 +69,7 @@ public class DDRun implements Runnable {
         try {
             init();
             countDownLatch.await();
-            System.out.println(Thread.currentThread().getName() + "启动时间是" + System.currentTimeMillis());
+//            System.out.println(Thread.currentThread().getName() + "启动时间是" + System.currentTimeMillis());
 //            Inout();
 //            System.out.println(Thread.currentThread().getName() + "输出完毕" + System.currentTimeMillis());
         } catch (InterruptedException e) {
