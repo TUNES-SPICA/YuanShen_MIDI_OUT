@@ -2,7 +2,17 @@ package util.DD;
 
 import java.util.HashMap;
 
-
+/**
+ * 按键映射
+ * 暂时只存在 o3 o4 o5 音域的按键，若以后存在其他的按键，直接扩充map即可
+ * o1
+ * o2
+ * o3 Z X C V B N M
+ * o4 A S D F G H J
+ * o5 Q W E R T Y U
+ * o6
+ * o7
+ */
 public class KeyBoardMapper {
 
     private static final HashMap<String, Integer> o3;

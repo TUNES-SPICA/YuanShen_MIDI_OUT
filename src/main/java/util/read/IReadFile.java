@@ -37,7 +37,6 @@ public class IReadFile extends method implements ReadFile {
                 YuanShenEntity yuanShenEntity = new YuanShenEntity();
                 yuanShenEntity.setSymbols(symbolQueueList);
                 return yuanShenEntity;
-                //开始读取
             }
         } catch (IOException e) {
             e.printStackTrace();
