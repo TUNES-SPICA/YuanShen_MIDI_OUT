@@ -9,6 +9,8 @@
 
     将.mid音乐文件，通过3MD转为.mml文件。将文件路径放入main方法中即可。
     3ml下载地址：http://3ml.jp/index.html
+    a站: https://www.acfun.cn/v/ac27362776
+    b站: https://www.bilibili.com/video/BV1xh411D77p/
 #### -运行流程
     1.读取部分
     读取.mml文件.
