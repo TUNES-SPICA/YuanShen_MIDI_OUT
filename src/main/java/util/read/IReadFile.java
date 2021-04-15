@@ -32,7 +32,6 @@ public class IReadFile extends method implements ReadFile {
                     System.out.println(str);
                 }
                 System.out.println("----END----");
-                System.out.println();
                 List<Queue<YuanShenSymbol>> symbolQueueList = countsToSymbol(track);
                 YuanShenEntity yuanShenEntity = new YuanShenEntity();
                 yuanShenEntity.setSymbols(symbolQueueList);
@@ -111,7 +110,6 @@ class method {
                 data.add(sb.toString());
                 sb = new StringBuffer(c + "");
             }
-            // 继续调用方法
             return readTextToCount(fis, sb, data, count + 1);
         }
     }
@@ -120,15 +118,6 @@ class method {
     /**
      * 将内容转化为操作单元
      * 对String的内容进行读取，拆分每一个操作进入队列
-     * for(counts)(
-     * <p>
-     * pointer++
-     * ↓
-     * str = "l1.rrrrrrrrrrrrrrrrrrrrr2.l1g+&g+&g+&g+&g+&g+4&g+16.&g+64>d+&d+&d+&d+d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+&d+4&d+16.&d+64e4&e32";
-     * <p>
-     * char c = String.charAt(pointer);
-     * <p>
-     * }
      *
      * @param counts list
      * @return 操作队列List

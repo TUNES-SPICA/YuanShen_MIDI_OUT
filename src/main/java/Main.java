@@ -11,9 +11,7 @@ public class Main {
 
     private static List<Queue<YuanShenSymbol>> symbolQueueList;
 
-    private static final String url = "" +
-            "D:\\project\\other\\MIDI_OUT\\src\\main\\resources\\学猫叫+佛系少女+好想你+青春修炼手册 组曲.mml"
-            + "";
+    private static String url;
 
     /**
      * ******************************************************************************
@@ -35,11 +33,12 @@ public class Main {
 
     /**
      * 初始化操作
+     * 设置文件路径
      */
     public static void init() {
         try {
             Thread.sleep(2000);
-            System.out.println("代表我初始化了");
+            url = "D:\\project\\other\\MIDI_OUT\\src\\main\\resources\\学猫叫+佛系少女+好想你+青春修炼手册 组曲.mml";
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -58,6 +57,7 @@ public class Main {
     /**
      * 输出按键
      * 注释掉DDRan.run() 中的 Inout() 方法可以关闭输出
+     * 利用CountDownLatch对象将线程阻塞，所有线程加载音轨完毕时，同时输出按键，防止顺序错乱
      *
      * @param symbolQueueList 乐谱音轨队列
      */

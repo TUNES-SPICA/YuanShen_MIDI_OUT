@@ -37,13 +37,4 @@ public class ParameterCheck<T> {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            getC().check(msg -> 18 * 8 > 100 ? null : "不可大于一百");
-            getC().check(msg -> 8 * 8 > 100 ? null : "不可大于一百");
-
-        } catch (CheckException e) {
-            e.printMsg();
-        }
-    }
 }

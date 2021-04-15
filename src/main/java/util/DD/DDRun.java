@@ -19,8 +19,8 @@ public class DDRun implements Runnable {
         inputSymbolsQueue = new LinkedList<>();
         KeyBoardMapper mapper = new KeyBoardMapper();
         GlobalVariablesEntity var = new GlobalVariablesEntity();
-        StringBuffer sb = new StringBuffer();
-        StringBuffer sb2 = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
         while (!yuanShenSymbolQueue.isEmpty()) {
             YuanShenSymbol temp = yuanShenSymbolQueue.poll();
             InoutSymbol entity = new InoutSymbol();
@@ -28,19 +28,19 @@ public class DDRun implements Runnable {
             if (temp.type == 1) {
                 sb2.append(temp.key);
                 sb2.append(2000 / temp.param);
+                Integer key;
                 if (temp.key.length() == 1) {
                     // 白键，记录
-                    Integer key = mapper.getYuanShenKey(var.getO(), temp.key);
-                    entity.keyValue = (key == null ? 309 : key);
+                    key = mapper.getYuanShenKey(var.getO(), temp.key);
                 } else {
                     // 黑键，降调
-                    Integer key = mapper.getYuanShenKey(var.getO(), String.valueOf(temp.key.charAt(0)));
-                    entity.keyValue = (key == null ? 309 : key);
+                    key = mapper.getYuanShenKey(var.getO(), String.valueOf(temp.key.charAt(0)));
                 }
+                entity.keyValue = (key == null ? 309 : key);
                 entity.time = temp.param;
                 inputSymbolsQueue.add(entity);
             } else {
-                sb2.append("o" + temp.param);
+                sb2.append("o").append(temp.param);
                 if ("o".equals(temp.key)) {
                     var.setO(temp.param);
                 }

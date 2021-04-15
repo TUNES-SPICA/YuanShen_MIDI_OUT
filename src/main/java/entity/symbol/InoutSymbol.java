@@ -1,7 +1,7 @@
 package entity.symbol;
 
 /**
- * 一一个输出单元
+ * 一个输出单元
  */
 public class InoutSymbol {
 
